@@ -1,5 +1,7 @@
 package com.lc.practice.questionbank;
 
+import java.util.*;
+
 /*
 https://leetcode.com/problems/two-sum/description/
 You are given an array of integer and a target sum of 2 integers
@@ -19,10 +21,48 @@ Explanation: no two numbers in the array add up to 1
  */
 public class TwoSum {
     static boolean suboptimalSolution(int[] input, int sum) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int i = 0; i < input.length; i++) {
+            if (!freq.containsKey(sum - input[i])) {
+                freq.put(sum - input[i], 0);
+            }
+            freq.put(sum - input[i], freq.get(sum - input[i]) + 1);
+        }
+        for (int i = 0; i < input.length; i++) {
+            if (freq.containsKey(input[i])) {
+                if (2 * input[i] == sum) {
+                    if (freq.get(input[i]) > 1) {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            }
+        }
         return false;
+        // 12 min 13 sec
     }
 
     static boolean optimalSolution(int[] input, int sum) {
-        return  false;
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int i = 0; i < input.length; i++) {
+            if (!freq.containsKey(sum - input[i])) {
+                freq.put(sum - input[i], 0);
+            }
+            freq.put(sum - input[i], freq.get(sum - input[i]) + 1);
+        }
+        for (int i = 0; i < input.length; i++) {
+            if (freq.containsKey(input[i])) {
+                if (2 * input[i] == sum) {
+                    if (freq.get(input[i]) > 1) {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+        // 0 sec
     }
 }

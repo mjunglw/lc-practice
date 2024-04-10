@@ -11,7 +11,12 @@ class DuplicatesInArrayTest {
     @Test
     public void duplicateFoundSuboptimalSolution() {
         int[] input = new int[]{1,2,3,4,5,5,4,3,2,1};
-        Set<Integer> output = new HashSet<>(){{add(1);add(2);add(3);add(4);add(5);}};
+        Set<Integer> output = new HashSet<>();
+        output.add(1);
+        output.add(2);
+        output.add(3);
+        output.add(4);
+        output.add(5);
         assertEquals(DuplicatesInArray.suboptimalSolution(input), output);
     }
 
